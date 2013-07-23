@@ -1,2 +1,18 @@
-<h1>List#index</h1>
-<p>Find me in app/views/list/index.html.erb</p>
+<h1>List App</h1>
+<div ng-controller="ListCtrl">
+  <h2 ng-show="has_user_name()">Welcome {{user_name}}<i ng-click="delete_user()"class="icon-remove"></i></h2>
+  <form class="form-inline" ng-submit="set_user_name()" ng-hide="has_user_name()">
+    <input type="text" ng-model="user_name" placeholder="Enter Your Name">
+    <button class="btn" type="submit" > Save </button>
+  </form>
+
+  <form class="form-inline" ng-submit="add_item()">
+    <input type="text" ng-model="new_item" placeholder="Description">
+    <button class="btn" type="submit" > Add </button>
+  </form>
+  <ul>
+    <li ng-repeat="item in list">
+    {{item}} <i ng-click="deleteItem()"class="icon-remove"></i>
+    </li>
+  </ul>
+</div>
