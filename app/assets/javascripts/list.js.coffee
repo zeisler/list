@@ -1,5 +1,4 @@
 @ListCtrl = ($scope)->
-
   #check localStorage and and if exists load it
   unless _.isUndefined(localStorage.getItem('user_name'))
     $scope.user_name = localStorage.getItem('user_name')
@@ -10,13 +9,14 @@
     $scope.list = JSON.parse(localStorage.getItem('list'))
 
   $scope.add_item = ->
-    if $scope.list == undefined
-      $scope.list = []
-    if localStorage['list']
-      localStorage['list'] = []
-    $scope.list.push($scope.new_item)
-    localStorage['list'] = JSON.stringify($scope.list)
-    $scope.new_item = ""
+    unless $scope.new_item == "" || $scope.new_item == undefined
+      if $scope.list == undefined
+        $scope.list = []
+      if localStorage['list']
+        localStorage['list'] = []
+      $scope.list.push($scope.new_item)
+      localStorage['list'] = JSON.stringify($scope.list)
+      $scope.new_item = ""
 
   $scope.deleteItem = ->
     $scope.list.splice(@$index, 1)
