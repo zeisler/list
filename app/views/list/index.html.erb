@@ -11,7 +11,7 @@
     <button class="btn" type="submit" > Add </button>
   </form>
   <ul>
-    <li ng-repeat="item in list">
+    <li ng-repeat="item in list track by $index" ng-animate="'animate'" >
     {{item}} <i ng-click="deleteItem()"class="icon-remove"></i>
     </li>
   </ul>

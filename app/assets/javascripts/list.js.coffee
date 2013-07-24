@@ -19,13 +19,13 @@
     $scope.new_item = ""
 
   $scope.deleteItem = ->
-    $scope.list = _.without($scope.list, @item)
+    $scope.list.splice(@$index, 1)
     localStorage['list'] = JSON.stringify($scope.list)
 
   $scope.set_user_name = ->
     localStorage.setItem('user_name', $scope.user_name)
   $scope.delete_user = ->
-    localStorage.setItem('user_name', null)
+    localStorage.removeItem('user_name')
   $scope.has_user_name = ->
     _.has localStorage, 'user_name'
 
